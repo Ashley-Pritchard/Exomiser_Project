@@ -1,0 +1,4 @@
+#!/bin/bash
+
+cd /home/hpcprit1/rds/rds-who1000-wgs10k/user/cjp64/share/exomiser/exomiser-cli-12.1.0/
+parallel -tj30 "java -Xms2g -Xmx4g -jar exomiser-cli-12.1.0.jar --analysis {}" ::: /home/hpcprit1/Documents/Exomiser_Project/scripts/analysis_scripts/*.yml
