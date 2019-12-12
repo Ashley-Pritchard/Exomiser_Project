@@ -3,8 +3,7 @@ import re
 import sys
 import csv
 
-
-vcf_paths = glob.glob('/home/hpcprit1/rds/rds-who1000-wgs10k/WGS10K/data/releas$
+vcf_paths = glob.glob('/home/hpcprit1/rds/rds-who1000-wgs10k/WGS10K/data/release/20180228-A/vcf/HCM/*.vcf.gz')
 
 vcf_files = []
 for vcf in vcf_paths:
