@@ -1,0 +1,21 @@
+analysis:
+  genomeAssembly: hg19
+  vcf: 
+  hpoIds: [HP:0001639]
+  inheritanceModes: {}
+  analysisMode: PASS_ONLY
+  frequencySources: [TOPMED, UK10K, GNOMAD_G_AFR, GNOMAD_G_AMR, GNOMAD_G_EAS, GNOMAD_G_FIN,
+    GNOMAD_G_NFE, GNOMAD_G_OTH, GNOMAD_G_SAS]
+  pathogenicitySources: [POLYPHEN, MUTATION_TASTER, SIFT, CADD]
+  steps: [qualityFilter: {minQuality: 20.0}, variantEffectFilter: {remove: [FIVE_PRIME_UTR_EXON_VARIANT,
+          FIVE_PRIME_UTR_INTRON_VARIANT, THREE_PRIME_UTR_EXON_VARIANT, THREE_PRIME_UTR_INTRON_VARIANT,
+          NON_CODING_TRANSCRIPT_EXON_VARIANT, UPSTREAM_GENE_VARIANT, INTERGENIC_VARIANT,
+          REGULATORY_REGION_VARIANT, CODING_TRANSCRIPT_INTRON_VARIANT, NON_CODING_TRANSCRIPT_INTRON_VARIANT,
+          DOWNSTREAM_GENE_VARIANT, SYNONYMOUS_VARIANT]}, frequencyFilter: {maxFrequency: 0.01},
+    pathogenicityFilter: {keepNonPathogenic: true}, inheritanceFilter: {}, omimPrioritiser: {},
+    hiPhivePrioritiser: {}]
+outputOptions:
+  outputContributingVariantsOnly: false
+  numGenes: 0
+  outputPrefix: 
+  outputFormats: [HTML, JSON, TSV_GENE, TSV_VARIANT, VCF]
