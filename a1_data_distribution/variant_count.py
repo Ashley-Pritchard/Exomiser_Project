@@ -1,4 +1,4 @@
-#script to count autosomal dominant (AD), autosomal recessive (AR) and the total number of variants per patient and output findings as box plots.
+#script to count the number of autosomal dominant (AD) and autosomal recessive (AR) variants per patient and output findings as box plots.
 
 import argparse
 import glob
