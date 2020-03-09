@@ -22,7 +22,7 @@ exomiser_files = glob.glob('/home/ashley/Documents/Exomiser_Project/exomiser_tra
 #create an exmpty list to append AD variant count  
 AD = []
 
-#iterate through files and append the count of AD variants >0.9 per patient to empty list 
+#iterate through files and append the count of AD variants per patient to empty list 
 for ex in exomiser_files:
 	df = pd.read_csv(ex, sep='\t')
 	count = len(df)			
@@ -34,7 +34,7 @@ exomiser_files = glob.glob('/home/ashley/Documents/Exomiser_Project/exomiser_tra
 #create an exmpty list to append AR variant count 
 AR = []
 
-#iterate through files and append the count of AR variants >0.9 per patient to empty list 
+#iterate through files and append the count of AR variants per patient to empty list 
 for ex in exomiser_files:
 	df = pd.read_csv(ex, sep='\t')
 	count = len(df)			
