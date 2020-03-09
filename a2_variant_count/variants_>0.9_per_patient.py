@@ -7,6 +7,7 @@ import pandas as pd
 import sys
 import matplotlib.pyplot as plt
 from operator import add 
+import statistics
 
 #request command line input of the AD and AR run names for analysis
 parser = argparse.ArgumentParser()
@@ -50,6 +51,10 @@ for ex in exomiser_files:
 		AR.append(count)
 	else:
 		AR.append(0)
+
+#print the median gene count statistics for AD and AR
+print('The median AD variant count is:' + str(statistics.median(AD)))
+print('The median AR variant count is:' + str(statistics.median(AR)))
 
 #set data to plot as the calculated AD and AR variant counts per patient 
 data_to_plot = [AD, AR]
