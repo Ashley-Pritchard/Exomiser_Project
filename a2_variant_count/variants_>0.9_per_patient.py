@@ -52,7 +52,7 @@ for ex in exomiser_files:
 	else:
 		AR.append(0)
 
-#print the median gene count statistics for AD and AR
+#print the median variant count statistics for AD and AR
 print('The median AD variant count is:' + str(statistics.median(AD)))
 print('The median AR variant count is:' + str(statistics.median(AR)))
 
