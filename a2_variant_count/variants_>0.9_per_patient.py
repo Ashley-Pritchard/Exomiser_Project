@@ -1,3 +1,5 @@
+#script to count autosomal dominant (AD), autosomal recessive (AR) and the total number of variants with a combined score >0.9 per patient and output findings as box plots.
+
 import argparse
 import glob
 import os
@@ -6,13 +8,14 @@ import sys
 import matplotlib.pyplot as plt
 from operator import add 
 
-#request command line input of the names of the AD and AR runs for plotting 
+#request command line input of the AD and AR run names for analysis
 parser = argparse.ArgumentParser()
 parser.add_argument("run_name_AD", help='input the name of the run you are analysing')
 parser.add_argument("run_name_AR", help='input the name of the run you are analysing')
 args = parser.parse_args()
 
-#pull all AD variant analysis files output from exomiser 
+#output files from each Exomiser run were transferred from the CSD3 server to a 'exomiser_output_files' directory on the local machine
+#pull all AD variant analysis files for specified run
 exomiser_files = glob.glob('/home/ashley/Documents/Exomiser_Project/exomiser_transfer/exomiser_output_files/' + args.run_name_AD + '/*.variants.tsv')
 
 #create an exmpty list to append AD variant count  
@@ -30,7 +33,7 @@ for ex in exomiser_files:
 	else:
 		AD.append(0)
 
-#pull all AR variant analysis files output from exomiser 
+#pull all AR variant analysis files for specified run
 exomiser_files = glob.glob('/home/ashley/Documents/Exomiser_Project/exomiser_transfer/exomiser_output_files/' + args.run_name_AR + '/*.variants.tsv')
 
 #create an exmpty list to append AR variant count 
@@ -51,7 +54,7 @@ for ex in exomiser_files:
 #set data to plot as the calculated AD and AR variant counts per patient 
 data_to_plot = [AD, AR]
 
-#plot histogram of variant counts 
+#plot boxplot for the count of AD and AR variants with a combined score >0.9 per patient
 plt.boxplot(data_to_plot, vert=True)
 plt.xticks([1, 2], ['AD', 'AR'])
 plt.xlabel('Inheritance Pattern', labelpad=10)
@@ -59,10 +62,10 @@ plt.ylabel('Number of Variants', labelpad=10)
 plt.title('Number of Variants per Patient with a Combined Score >0.9', pad=10)
 plt.show()
 
-#set data to plot as the total number of variants per patient 
+#set data to plot as the total number of AD and AR variants with a combined score >0.9 per patient 
 total = list(map(add, AD, AR))
 
-#plot histogram of total variant count 
+#plot boxplot for the total count of AD and AR variants with a combined score >0.9 per patient 
 plt.boxplot(total, vert=True)
 plt.xticks([1], [''])
 plt.xlabel('Total AD and AR', labelpad=10)
