@@ -53,14 +53,3 @@ plt.xlabel('Inheritance Pattern', labelpad=10)
 plt.ylabel('Number of Variants', labelpad=10)
 plt.title('Number of Variants per Patient', pad=10)
 plt.show()
-
-#set data to plot as the total number of AD and AR variants per patient 
-total = list(map(add, AD, AR))
-
-#plot boxplot for the total count of AD and AR variants per patient 
-plt.boxplot(total, vert=True)
-plt.xticks([1], [''])
-plt.xlabel('Total AD and AR', labelpad=10)
-plt.ylabel('Number of Variants', labelpad=10)
-plt.title('Number of Variants per Patient', pad=10)
-plt.show()
