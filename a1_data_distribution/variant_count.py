@@ -40,6 +40,7 @@ for ex in exomiser_files:
 	count = len(df)			
 	AR.append(count)
 
+#print the median statistics for AD and AR counts 
 print('The median AD variant count is:' + str(statistics.median(AD)))
 print('The median AR variant count is:' + str(statistics.median(AR)))
 
