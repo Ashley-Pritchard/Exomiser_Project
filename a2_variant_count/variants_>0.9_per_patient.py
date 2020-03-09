@@ -1,4 +1,4 @@
-#script to count autosomal dominant (AD), autosomal recessive (AR) and the total number of variants with a combined score >0.9 per patient and output findings as box plots.
+#script to count the number of autosomal dominant (AD) and autosomal recessive (AR) variants with a combined score >0.9 per patient and output findings as box plots.
 
 import argparse
 import glob
@@ -58,17 +58,6 @@ data_to_plot = [AD, AR]
 plt.boxplot(data_to_plot, vert=True)
 plt.xticks([1, 2], ['AD', 'AR'])
 plt.xlabel('Inheritance Pattern', labelpad=10)
-plt.ylabel('Number of Variants', labelpad=10)
-plt.title('Number of Variants per Patient with a Combined Score >0.9', pad=10)
-plt.show()
-
-#set data to plot as the total number of AD and AR variants with a combined score >0.9 per patient 
-total = list(map(add, AD, AR))
-
-#plot boxplot for the total count of AD and AR variants with a combined score >0.9 per patient 
-plt.boxplot(total, vert=True)
-plt.xticks([1], [''])
-plt.xlabel('Total AD and AR', labelpad=10)
 plt.ylabel('Number of Variants', labelpad=10)
 plt.title('Number of Variants per Patient with a Combined Score >0.9', pad=10)
 plt.show()
