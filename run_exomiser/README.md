@@ -11,3 +11,5 @@ Exome data for the 269 HCM patients included in this study was provided by the N
 <strong>pull_vcfs_patient_IDs.py:</strong> pulls the 269 hypertrophic cardiomyopathy patient IDs from the CSD3 and saves them as a text file for reference in later analysis <br><br>
 <strong>yml_template.yml:</strong> an individual yml file is required for each of the patient VCFs for analysis; this file provides the template settings for each <br><br>
 <strong>generate_yml_files.py:</strong> uses the text file of VCF IDs and yml template to generate an individual yml file for each patient VCF to be analysed <br><br>
+<strong>exomiser:</strong> bash script to run Exomiser on all the yml files placed in the 'analysis_scripts' directory <br><br>
+<strong>slurm_submit.peta4-skylake-exomiser:</strong> submission script to run the Exomiser job on the Cambridge CSS3 server
