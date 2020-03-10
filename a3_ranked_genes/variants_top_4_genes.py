@@ -26,16 +26,16 @@ for ex in exomiser_files:
 	for index, row in df.iterrows():
 		if row[10] == 'DES' and row[31] >=0.9:
 			variant.append(row[9])
-			patient.append(re.split('/', ex)[7])
+			patient.append(re.split('/|_', ex)[13])
 		elif row[10] == 'NAGLU' and row[31] >=0.9:
 			variant.append(row[9])
-			patient.append(re.split('/', ex)[7])
+			patient.append(re.split('/|_', ex)[13])
 		elif row[10] == 'MYH7' and row[31] >=0.9:
 			variant.append(row[9])
-			patient.append(re.split('/', ex)[7])
+			patient.append(re.split('/|_', ex)[13])
 		elif row[10] == 'MYOZ2' and row[31] >=0.9:
 			variant.append(row[9])
-			patient.append(re.split('/', ex)[7])
+			patient.append(re.split('/|_', ex)[13])
 
 #make dictionary of pulled patient and variant data 
 dict = { 'patient': patient, 'variant' : variant }
