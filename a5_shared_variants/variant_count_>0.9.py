@@ -6,17 +6,18 @@ import os
 import pandas as pd
 import sys
 
-#request command line input of the cutoff value for the combined score to be applied
+#request command line input of the cutoff value for the combined score to be applied and the run name to be analysed
 parser = argparse.ArgumentParser()
 parser.add_argument("cutoff", help='state the combined score cutoff to be used when running script')
 parser.add_argument("run_name", help='input the name of the run you are analysing')
 args = parser.parse_args()
 
-#pull all variant analysis files output from exomiser 
+#output files from each Exomiser run were transferred from the CSD3 server to a 'exomiser_output_files' directory on the local machine
+#pull all gene analysis files for specified run 
 exomiser_files = glob.glob('/home/ashley/Documents/Exomiser_Project/exomiser_transfer/exomiser_output_files/' + args.run_name + '/*.variants.tsv')
 
 #make a new analysis directory of the run name if one does not exist already
-os.makedirs('/home/ashley/Documents/Exomiser_Project/exomiser_transfer/analysis/' + args.run_name, exist_ok=True)
+os.makedirs(args.run_name, exist_ok=True)
 
 #create an empty list for appending variants with a combined exomiser score > cutoff value specified by user 
 variant = []
@@ -35,5 +36,5 @@ df2 = pd.DataFrame(variant, columns=['Variant'])
 df2 = df2.groupby(['Variant']).size().sort_values(ascending=False)
 
 #save results as csv file to the analysis folder for that run
-df2.to_csv('/home/ashley/Documents/Exomiser_Project/exomiser_transfer/analysis/' + args.run_name + '/variant_list_combined_score_>_' + args.cutoff + '.csv', sep=',', header=True)
+df2.to_csv(args.run_name + '/variant_list_combined_score_>_' + args.cutoff + '.csv', sep=',', header=True)
 
