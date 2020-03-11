@@ -21,9 +21,13 @@ Exomiser v12.1.0 <br>
 hg19 Reference Genome <br> 
 Exomiser phenotype data v1909 <br>
 python v3.7.4 <br>
-matplotlib v3.1.2 <br>
-numpy v1.18.1 <br>
-pandas v0.25.3 <br>
 pip v19.2.2 <br>
+pandas v0.25.3 <br>
+numpy v1.18.1 <br>
+scipy v1.4.1 <br>
+matplotlib v3.1.2 <br>
+
+
+
 
 
