@@ -1,4 +1,4 @@
-#script to generate a random sample of the 30 / 269 HCM patients for variant interpretation
+#script to generate a random sample of 30 / 269 HCM patients for variant interpretation
 
 import argparse
 import glob
