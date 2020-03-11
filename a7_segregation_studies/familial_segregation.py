@@ -1,4 +1,4 @@
-#segregation analysis - script to pull data for variants with a combined Exomiser score of more than 0.9 which are seen in all members of a family 
+#segregation analysis - script to pull data for variants that are seen in all members of a family and which have a combined exomiser score of more than 0.9. Takes input of run name and family ID and outputs passed variants as a csv.
 
 import glob
 import pandas as pd
