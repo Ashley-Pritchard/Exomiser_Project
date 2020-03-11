@@ -1,4 +1,4 @@
-#segregation analysis - script to pull data for variants seen in all members of a family 
+#segregation analysis - script to pull data for variants with a combined Exomiser score of more than 0.9 which are seen in all members of a family 
 
 import glob
 import pandas as pd
@@ -14,8 +14,8 @@ args = parser.parse_args()
 #pull variant files for family members 
 exomiser_files = glob.glob('/home/ashley/Documents/Exomiser_Project/exomiser_transfer/exomiser_output_files/' + args.run_name + '/' + args.family + '/*.variants.tsv')
 
-#make folder in relevant analysis directory if one does not exist 
-os.makedirs('/home/ashley/Documents/Exomiser_Project/exomiser_transfer/analysis/' + args.run_name + '/' + args.family, exist_ok=True)
+#make directory to store analysis files if one does not exist 
+os.makedirs(args.run_name + '/' + args.family, exist_ok=True)
 
 #create a single dataframe for the family by concatenating the variant files for family members 
 df = pd.concat((pd.read_csv(ex_file, sep='\t') for ex_file in exomiser_files), ignore_index=True)
@@ -25,6 +25,9 @@ family_size = len(exomiser_files)
 
 #create a new dataframe consisting of only variants seen in all family members
 df = pd.concat(g for _, g in df.groupby("HGVS") if len(g) >= family_size)
+
+#drop variants with a combined Exomiser Score of less than 0.9
+df = df[df['EXOMISER_GENE_COMBINED_SCORE'] > 0.9]
 
 #drop columns not required 
 df = df.drop(columns=['#CHROM', 'POS', 'REF', 'ALT', 'COVERAGE', 'QUAL', 'FILTER', 'GENOTYPE', 'POLYPHEN(>0.956|>0.446)', 'MUTATIONTASTER(>0.94)', 'SIFT(<0.06)', 'REMM', 'DBSNP_FREQUENCY', 'EVS_EA_FREQUENCY', 'EVS_AA_FREQUENCY', 'EXAC_AFR_FREQ', 'EXAC_AMR_FREQ', 'EXAC_EAS_FREQ', 'EXAC_FIN_FREQ', 'EXAC_NFE_FREQ', 'EXAC_SAS_FREQ', 'EXAC_OTH_FREQ', 'CONTRIBUTING_VARIANT'])
@@ -42,5 +45,5 @@ df = df.sort_values(by=['Combined_Score_Exomiser'], ascending=False)
 df = df[['HGVS', 'Gene', 'Class', 'dbSNP', 'Max_Allel_Freq', 'CADD', 'Variant_Score_Exomiser', 'Gene_Pheno_Score_Exomiser', 'Gene_Variant_Score_Exomiser', 'Combined_Score_Exomiser']]
 
 #save dataframe as csv to relevant analysis directory 
-df.to_csv('/home/ashley/Documents/Exomiser_Project/exomiser_transfer/analysis/' + args.run_name + '/' + args.family + '/familial_variants_' + args.family + '.csv', sep=',', index=False)
+df.to_csv(args.run_name + '/' + args.family + '/familial_variants_' + args.family + '.csv', sep=',', index=False)
 
