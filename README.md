@@ -20,6 +20,7 @@ The tools and resources required for this projects, and the versions tested, are
 Exomiser v12.1.0 <br>
 hg19 Reference Genome <br> 
 Exomiser phenotype data v1909 <br>
+Java 11.0.6
 python v3.7.4 <br>
 pip v19.2.2 <br>
 pandas v0.25.3 <br>
