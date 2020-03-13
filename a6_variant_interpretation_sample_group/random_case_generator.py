@@ -14,7 +14,7 @@ for ex in exomiser_file_path:
 	exomiser_files.append(ex.split('/')[8])
 
 #create the random sample of 30 patient IDs
-sampling = random.choices(exomiser_files, k=30)
+sampling = random.choices(exomiser_files, k=20)
 
 #print the sample to the terminal 
 print(sampling)
