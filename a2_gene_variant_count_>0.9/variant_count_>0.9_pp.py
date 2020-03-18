@@ -27,7 +27,9 @@ for ex in exomiser_files:
 	df = pd.read_csv(ex, sep='\t')
 	count = 0
 	for index, row in df.iterrows():
-		if row[31] >= 0.9:
+#uncomment as appropriate to count all variants or variants that are not considered artefacts in HLA-B and 2814_2816del in Pex6
+#		if row[31] >= 0.9:
+#		if row[31] >= 0.9 and 'HLA-B' not in str(row[9]) and '2814_2816del' not in str(row[9]):
 			count += 1			
 	if count > 0:
 		AD.append(count)
