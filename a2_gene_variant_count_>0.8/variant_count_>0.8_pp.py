@@ -1,4 +1,4 @@
-#script to count the number of autosomal dominant (AD) and autosomal recessive (AR) variants with a combined score >0.9 per patient and output findings as box plots.
+#script to count the number of autosomal dominant (AD) and autosomal recessive (AR) variants with a combined score >0.8 per patient and output findings as box plots.
 
 import argparse
 import glob
@@ -28,8 +28,8 @@ for ex in exomiser_files:
 	count = 0
 	for index, row in df.iterrows():
 #uncomment as appropriate to count all variants or variants that are not considered artefacts in HLA-B and 2814_2816del in Pex6
-#		if row[31] >= 0.9:
-#		if row[31] >= 0.9 and 'HLA-B' not in str(row[9]) and '2814_2816del' not in str(row[9]):
+#		if row[31] >= 0.8:
+#		if row[31] >= 0.8 and 'HLA-B' not in str(row[9]) and '2814_2816del' not in str(row[9]):
 			count += 1			
 	if count > 0:
 		AD.append(count)
@@ -47,7 +47,9 @@ for ex in exomiser_files:
 	df = pd.read_csv(ex, sep='\t')
 	count = 0
 	for index, row in df.iterrows():
-		if row[31] >= 0.9:
+#uncomment as appropriate to count all variants or variants that are not considered artefacts in HLA-B and 2814_2816del in Pex6
+#		if row[31] >= 0.8:
+#		if row[31] >= 0.8 and 'HLA-B' not in str(row[9]) and '2814_2816del' not in str(row[9]):
 			count += 1
 	if count > 0:	
 		AR.append(count)
@@ -66,6 +68,8 @@ plt.boxplot(data_to_plot, vert=True)
 plt.xticks([1, 2], ['AD', 'AR'])
 plt.xlabel('Inheritance Pattern', labelpad=10)
 plt.ylabel('Number of Variants', labelpad=10)
-plt.title('Number of Variants per Patient with a Combined Score >0.9', pad=10)
+#Uncomment as appropriate
+#plt.title('Number of Variants per Patient with a Combined Score >0.8', pad=10)
+#plt.title('Number of Filtered Variants per Patient with a Combined Score >0.8', pad=10)
 plt.show()
 
