@@ -1,4 +1,4 @@
-#script to count the number of genes which harbour autosomal dominant (AD) and autosomal recessive (AR) variants with a combined score >0.9 per patient and output findings as box plots.
+#script to count the number of genes which harbour autosomal dominant (AD) and autosomal recessive (AR) variants with a combined score >0.8 per patient and output findings as box plots.
 
 import argparse
 import glob
