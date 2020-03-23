@@ -27,7 +27,9 @@ for ex in exomiser_files:
 	df = pd.read_csv(ex, sep='\t')
 	count = 0
 	for index, row in df.iterrows():
-		if row[4] >= 0.9:
+#		uncomment one as appropriate to filter or not filter on HLA-B
+#		if row[4] >= 0.8:
+#		if row[4] >= 0.8 and 'HLA-B' not in str(row[0]):
 			count += 1			
 	if count > 0:
 		AD.append(count)
@@ -45,7 +47,9 @@ for ex in exomiser_files:
 	df = pd.read_csv(ex, sep='\t')
 	count = 0
 	for index, row in df.iterrows():
-		if row[4] >= 0.9:
+#		uncomment one as appropriate to filter or not filter on HLA-B
+#		if row[4] >= 0.8:
+#		if row[4] >= 0.8 and 'HLA-B' not in str(row[0]):
 			count += 1
 	if count > 0:	
 		AR.append(count)
@@ -64,5 +68,7 @@ plt.boxplot(data_to_plot, vert=True)
 plt.xticks([1, 2], ['AD', 'AR'])
 plt.xlabel('Inheritance Pattern', labelpad=10)
 plt.ylabel('Number of Genes', labelpad=10)
-plt.title('Number of Genes Harbouring Variants with a Combined Score >0.9 per patient', pad=10)
+#uncomment as appropriate
+#plt.title('Number of Genes Harbouring Variants with a Combined Score >0.8 per patient', pad=10)
+#plt.title('Number of Filtered Genes Harbouring Variants with a Combined Score >0.8 per patient', pad=10)
 plt.show()
